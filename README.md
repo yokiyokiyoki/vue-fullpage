@@ -33,10 +33,10 @@ or
 ```html
 <!-- default -->
 <!-- 依赖于父级元素的大小，占满父级元素 -->
-<full-page>
+<v-fullpage>
     <div slot='section'></div>
     <div slot='section'></div>
-</full-page>
+</v-fullpage>
 ```
 
 ## Options
