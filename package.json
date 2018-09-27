@@ -62,5 +62,6 @@
     "vue-fullpage",
     "vue-component",
     "fullpage.js"
-  ]
+  ],
+  "license": "MIT"
 }
