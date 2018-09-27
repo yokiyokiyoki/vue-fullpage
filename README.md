@@ -1,22 +1,60 @@
 # vue-fullpage
 
-## Project setup
+![image](https://img.shields.io/badge/vue-2.5.17-blue.svg)
+![image](https://img.shields.io/badge/vue--cli-3.0.0-green.svg)
+
+> A Vue.js components
+
+## Install
+
 ```
-yarn install
+$ npm install v-fullpage
 ```
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
+## Usage
+
+```javascript
+import Vue from "vue";
+import fullpage from "v-fullpage";
+
+Vue.use(fullpage);
 ```
 
-### Compiles and minifies for production
-```
-yarn run build
+or
+
+```html
+<script src="vue.min.js"></script>
+<!-- must place this line after vue.js -->
+<script src="v-fullpage.umd.min.js"></script>
 ```
 
-### Lints and fixes files
+## Demo
+
+```html
+<!-- default -->
+<!-- 依赖于父级元素的大小，占满父级元素 -->
+<full-page>
+    <div slot='section'></div>
+    <div slot='section'></div>
+</full-page>
 ```
-yarn run lint
-```
-# vue-fullpage
+
+## Options
+
+| Property | Description | Type | Default |
+| :------: | ----------- | :--: | :-----: |
+|   none   | none        | none |  none   |
+
+### Callback
+
+|    Name    | Description                |
+| :--------: | -------------------------- |
+| leaveSlide | 滑动之后，参数是当前 index |
+
+### Methods
+
+> 通过 ref 调用组件内部
+
+|       Name        | Description                            |
+| :---------------: | -------------------------------------- |
+| setAllowScrolling | 传入 true/false，禁止滚动/开放滚动事件 |
