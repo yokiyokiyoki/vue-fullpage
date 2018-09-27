@@ -1,5 +1,5 @@
 <template>
-    <div class="fullpage-container" ref='fullpage' :style="styleObj">
+    <div class="fullpage-container" ref='fullpage' :style="fullpage.styleObject">
             <div class="scroll-container" v-show='isShow' ref='scrollContainer' style="transition: all ease 1s;">
                 <slot name='section'></slot>  
             </div>
@@ -14,7 +14,7 @@ export default {
                 isScrolling: false,
                 // 返回鼠标滚轮的垂直滚动量
                 deltaY:0,
-                styleObj:{
+                styleObject:{
                   position: 'absolute',
                   overflow: 'hidden',
                   top: 0,
@@ -50,7 +50,7 @@ export default {
             this.isShow=false
             //手动设置slots里面为section的
             this.$slots.section.forEach((item)=>{
-                item.elm.style.cssText=`height:${height}px;`
+                item.elm.style.height=`${height}px`
             })
             //显示滚动盒子
             this.isShow=true
@@ -74,7 +74,7 @@ export default {
             let $scroll = this.$refs['scrollContainer'];
             this.fullpage.isScrolling = true;
             let di = -(index-1)*height + 'px';
-            $scroll.style.cssText=`transform:translateY(${di})`
+            $scroll.style.transform=`translateY(${di})`
             this.$emit('leaveSlide',{currentIndex:this.fullpage.current})
             //这里的动画是1s执行完，使用setTimeout延迟1s后解锁
             setTimeout(()=>{
