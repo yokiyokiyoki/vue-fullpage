@@ -1,6 +1,6 @@
 <template>
-    <div class="fullpage" ref='fullpage'>
-            <div class="scrollContainer" v-show='isShow' ref='scrollContainer'>
+    <div class="fullpage-container" ref='fullpage'>
+            <div class="scroll-container" v-show='isShow' ref='scrollContainer'>
                 <slot name='section'></slot>  
             </div>
         </div>
@@ -108,7 +108,7 @@ function throttle(fn, delay) {
 
 </script>
 <style scoped>
-.fullpage {
+.fullpage-container {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -116,7 +116,7 @@ function throttle(fn, delay) {
   right: 0;
   overflow: hidden;
 }
-.scrollContainer {
+.scroll-container {
   transition: all ease 1s;
 }
 </style>
