@@ -1,6 +1,6 @@
 <template>
-    <div class="fullpage-container" ref='fullpage'>
-            <div class="scroll-container" v-show='isShow' ref='scrollContainer'>
+    <div class="fullpage-container" ref='fullpage' :style="styleObj">
+            <div class="scroll-container" v-show='isShow' ref='scrollContainer' style="transition: all ease 1s;">
                 <slot name='section'></slot>  
             </div>
         </div>
@@ -13,9 +13,17 @@ export default {
                 current:1,
                 isScrolling: false,
                 // 返回鼠标滚轮的垂直滚动量
-                deltaY:0
+                deltaY:0,
+                styleObj:{
+                  position: 'absolute',
+                  overflow: 'hidden',
+                  top: 0,
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                }
             },
-            isShow:false
+            isShow:false,
         }
     },
     mounted() {
@@ -107,8 +115,8 @@ function throttle(fn, delay) {
 }
 
 </script>
-<style scoped>
-.fullpage-container {
+<style  scoped>
+.fullpage {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -116,7 +124,7 @@ function throttle(fn, delay) {
   right: 0;
   overflow: hidden;
 }
-.scroll-container {
+.scrollContainer {
   transition: all ease 1s;
 }
 </style>
