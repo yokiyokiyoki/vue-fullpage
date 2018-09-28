@@ -1,5 +1,5 @@
 <template>
-    <div class="v-fullpage-container" ref='v-fullpage' @mousewheel.stop='mouseWheelHandle'>
+    <div class="v-fullpage-container" ref='v-fullpage' @mousewheel='mouseWheelHandle'>
             <div class="v-slide-container" :class="direction" ref='v-slide-container' v-show='isShow'>
                 <slot name='section'></slot>  
             </div>
@@ -7,6 +7,7 @@
 </template>
 <script>
 export default {
+    name:'v-fullpage',
     data(){
         return{
             fullpage:{
@@ -16,6 +17,10 @@ export default {
                 deltaY:0,
             },
             isShow:false,
+            isAllowScroll:true,
+            $api:{
+              setAllowScrolling:this.setAllowScrolling
+            }
         }
     },
     props:{
@@ -39,9 +44,9 @@ export default {
         },
         initFullPage(){
             //初始化容器宽高度
+            this.isShow=false
             let height = this.$refs['v-fullpage'].clientHeight;
             let width=this.$refs['v-fullpage'].clientWidth;
-            this.isShow=false
             this.direction=='horizontal'?this.$refs['v-slide-container'].style.width=`${width*this.$slots.section.length}px`:null;
             //手动设置slots里面为section的样式
             this.$slots.section.forEach((item)=>{
@@ -90,6 +95,9 @@ export default {
           }
         },
         mouseWheelHandle (event) {
+            if(!this.isAllowScroll){//是否可以滚动
+              return
+            }
             if (this.fullpage.isScrolling) {// 加锁部分
                 return false;
             }
@@ -102,11 +110,7 @@ export default {
             }
         },
         setAllowScrolling(isAllow){
-            if(isAllow){
-                document.addEventListener('mousewheel',this.mouseWheelHandle)
-            }else{
-                document.removeEventListener('mousewheel',this.mouseWheelHandle)
-            }
+          this.isAllowScroll=isAllow
         }
     }
 }
