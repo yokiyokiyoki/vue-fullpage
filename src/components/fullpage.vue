@@ -1,5 +1,5 @@
 <template>
-    <div class="v-fullpage-container" ref='v-fullpage' >
+    <div class="v-fullpage-container" ref='v-fullpage' @mousewheel.stop='mouseWheelHandle'>
             <div class="v-slide-container" :class="direction" ref='v-slide-container' v-show='isShow'>
                 <slot name='section'></slot>  
             </div>
@@ -26,14 +26,10 @@ export default {
     },
     mounted() {
         this.initFullPage()
-        // 滚动事件绑定
-        document.addEventListener('mousewheel',this.mouseWheelHandle)
         //窗口resize时候重新设计大小
         window.addEventListener('resize',this.resizeEventHandler)
     },
     beforeDestroy() {
-        // 滚动事件解绑
-        document.removeEventListener('mousewheel',this.mouseWheelHandle)
         window.removeEventListener("resize", this.resizeEventHandler, false);
     },
     methods:{

@@ -1,8 +1,15 @@
 <template>
   <div id="app">
-    <fullpage direction='horizontal'>
-      <div slot='section' class="section-one">1</div>
-      <div slot='section' class="section-two">2</div>
+    <fullpage >
+      <div slot='section' class="section-one">
+          1
+      </div>
+      <div slot='section' class="section-two" style="position:relative">
+          <fullpage direction='horizontal'>
+              <div slot='section' class="section-one">2</div>
+              <div slot='section' class="section-two">3</div>
+          </fullpage>
+      </div>
     </fullpage>
   </div>
 </template>
