@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <fullpage>
+    <fullpage direction='horizontal'>
       <div slot='section' class="section-one">1</div>
       <div slot='section' class="section-two">2</div>
     </fullpage>

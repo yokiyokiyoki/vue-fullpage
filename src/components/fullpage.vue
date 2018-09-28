@@ -1,6 +1,6 @@
 <template>
-    <div class="fullpage-container" ref='fullpage' >
-            <div class="scroll-container" v-show='isShow' ref='scrollContainer' >
+    <div class="v-fullpage-container" ref='v-fullpage' >
+            <div class="v-slide-container" :class="direction" ref='v-slide-container' v-show='isShow'>
                 <slot name='section'></slot>  
             </div>
         </div>
@@ -14,11 +14,15 @@ export default {
                 isScrolling: false,
                 // 返回鼠标滚轮的垂直滚动量
                 deltaY:0,
-                // 返回鼠标滚轮的横向滚动量
-                deltaX:0
             },
             isShow:false,
         }
+    },
+    props:{
+      direction:{
+        type: String,
+        default: 'vertical'//horizontal
+      }
     },
     mounted() {
         this.initFullPage()
@@ -26,7 +30,6 @@ export default {
         document.addEventListener('mousewheel',this.mouseWheelHandle)
         //窗口resize时候重新设计大小
         window.addEventListener('resize',this.resizeEventHandler)
-
     },
     beforeDestroy() {
         // 滚动事件解绑
@@ -39,12 +42,15 @@ export default {
             throttle(this.initFullPage(),300)
         },
         initFullPage(){
-            //初始化容器高度
-            let height = this.$refs['fullpage'].clientHeight;
+            //初始化容器宽高度
+            let height = this.$refs['v-fullpage'].clientHeight;
+            let width=this.$refs['v-fullpage'].clientWidth;
             this.isShow=false
-            //手动设置slots里面为section的
+            this.direction=='horizontal'?this.$refs['v-slide-container'].style.width=`${width*this.$slots.section.length}px`:null;
+            //手动设置slots里面为section的样式
             this.$slots.section.forEach((item)=>{
                 item.elm.style.height=`${height}px`
+                item.elm.style.width=`${width}px`
             })
             //显示滚动盒子
             this.isShow=true
@@ -64,16 +70,28 @@ export default {
         },
         move(index) {
             // 为了防止滚动多次滚动，需要通过一个变量来控制是否滚动
-            let height = this.$refs['fullpage'].clientHeight;
-            let $scroll = this.$refs['scrollContainer'];
             this.fullpage.isScrolling = true;
-            let di = -(index-1)*height + 'px';
-            $scroll.style.transform=`translateY(${di})`
+            this.directToMove(index)
             this.$emit('leaveSlide',{currentIndex:this.fullpage.current})
             //这里的动画是1s执行完，使用setTimeout延迟1s后解锁
             setTimeout(()=>{
                 this.fullpage.isScrolling = false;
             }, 1010);
+        },
+        directToMove(index){
+          let height = this.$refs['v-fullpage'].clientHeight;
+          let width=this.$refs['v-fullpage'].clientWidth;
+          let $scroll = this.$refs['v-slide-container'];
+          //位移多少
+          let displacement 
+          //判断是垂直滚动还是横向滚动
+          if(this.direction=='vertical'){
+            displacement = -(index-1)*height + 'px';
+            $scroll.style.transform=`translateY(${displacement})`
+          }else{
+            displacement = -(index-1)*width + 'px';
+            $scroll.style.transform=`translateX(${displacement})`
+          }
         },
         mouseWheelHandle (event) {
             if (this.fullpage.isScrolling) {// 加锁部分
@@ -110,7 +128,7 @@ function throttle(fn, delay) {
 
 </script>
 <style  scoped>
-.fullpage-container {
+.v-fullpage-container {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -118,7 +136,13 @@ function throttle(fn, delay) {
   right: 0;
   overflow: hidden;
 }
-.scroll-container {
+.v-slide-container {
   transition: all ease 1s;
+}
+.vertical {
+  display: block;
+}
+.horizontal {
+  display: inline-block;
 }
 </style>
