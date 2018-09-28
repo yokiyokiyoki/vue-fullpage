@@ -14,7 +14,8 @@ export default {
                 isScrolling: false,
                 // 返回鼠标滚轮的垂直滚动量
                 deltaY:0,
-                
+                // 返回鼠标滚轮的横向滚动量
+                deltaX:0
             },
             isShow:false,
         }
@@ -109,7 +110,7 @@ function throttle(fn, delay) {
 
 </script>
 <style  scoped>
-.fullpage {
+.fullpage-container {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -117,7 +118,7 @@ function throttle(fn, delay) {
   right: 0;
   overflow: hidden;
 }
-.scrollContainer {
+.scroll-container {
   transition: all ease 1s;
 }
 </style>
