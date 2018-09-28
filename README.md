@@ -41,9 +41,9 @@ or
 
 ## Options
 
-| Property | Description | Type | Default |
-| :------: | ----------- | :--: | :-----: |
-|   none   | none        | none |  none   |
+| Property  | Description                        |  Type  |  Default   |
+| :-------: | ---------------------------------- | :----: | :--------: |
+| direction | 滚动方向('vertical'或'horizontal') | String | 'vertical' |
 
 ### Callback
 
