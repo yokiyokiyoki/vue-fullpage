@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <fullpage ref='fullpage'>
+    <fullpage ref='fullpage' >
       <div slot='section' class="section-one">
           1
       </div>

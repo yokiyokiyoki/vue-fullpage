@@ -28,12 +28,6 @@ export default {
         type: String,
         default: 'vertical'//horizontal
       },
-      autoScroll:{
-        type:Boolean,
-        default(){
-          return false
-        }
-      }
     },
     mounted() {
         this.initFullPage()
@@ -117,7 +111,7 @@ export default {
         },
         setAllowScrolling(isAllow){
           this.isAllowScroll=isAllow
-        }
+        },
     }
 }
 function throttle(fn, delay) {
