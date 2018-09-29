@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <fullpage >
+    <fullpage ref='fullpage'>
       <div slot='section' class="section-one">
           1
       </div>
@@ -15,6 +15,10 @@ import fullpage from './components/fullpage'
 export default {
   components:{
     fullpage
+  },
+  mounted(){
+    /* eslint-disable */
+    console.log(this.$refs['fullpage'])
   }
 }
 </script>

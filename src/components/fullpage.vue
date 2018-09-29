@@ -18,7 +18,7 @@ export default {
             },
             isShow:false,
             isAllowScroll:true,
-            $api:{
+            api:{
               setAllowScrolling:this.setAllowScrolling
             }
         }
@@ -27,6 +27,12 @@ export default {
       direction:{
         type: String,
         default: 'vertical'//horizontal
+      },
+      autoScroll:{
+        type:Boolean,
+        default(){
+          return false
+        }
       }
     },
     mounted() {
