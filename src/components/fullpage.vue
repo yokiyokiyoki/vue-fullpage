@@ -93,6 +93,7 @@ export default {
             displacement = -(index-1)*width + 'px';
             $scroll.style.transform=`translateX(${displacement})`
           }
+          this.fullpage.current = index
         },
         mouseWheelHandle (event) {
             if(!this.isAllowScroll){//是否可以滚动
