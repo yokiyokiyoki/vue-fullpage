@@ -34,8 +34,8 @@ or
 <!-- default -->
 <!-- 依赖于父级元素的大小，占满父级元素 -->
 <v-fullpage>
-    <div slot='section'></div>
-    <div slot='section'></div>
+  <div slot="section"></div>
+  <div slot="section"></div>
 </v-fullpage>
 ```
 
@@ -58,3 +58,7 @@ or
 |       Name        | Description                            |
 | :---------------: | -------------------------------------- |
 | setAllowScrolling | 传入 true/false，禁止滚动/开放滚动事件 |
+
+## License
+
+MIT
