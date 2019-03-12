@@ -1,6 +1,6 @@
 {
   "name": "v-fullpage",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "private": false,
   "author": "yoki <419703726@qq.com>",
   "main": "dist/v-fullpage.umd.min.js",
