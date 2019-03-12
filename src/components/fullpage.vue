@@ -1,5 +1,5 @@
 <template>
-    <div class="v-fullpage-container" ref='v-fullpage' @mousewheel='mouseWheelHandle'>
+    <div class="v-fullpage-container" ref='v-fullpage' @mousewheel='mouseWheelHandle' @DOMMouseScroll='mouseWheelHandle'>
             <div class="v-slide-container" :class="direction" ref='v-slide-container' v-show='isShow'>
                 <slot name='section'></slot>  
             </div>
@@ -96,13 +96,13 @@ export default {
           this.fullpage.current = index
         },
         mouseWheelHandle (event) {
-			// 添加冒泡阻止
-			let evt = event || window.event;
-			if( evt.stopPropagation ) {
-				evt.stopPropagation();
-			} else {
-				evt.returnValue = false;
-			}
+            // 添加冒泡阻止
+            let evt = event || window.event;
+            if( evt.stopPropagation ) {
+              evt.stopPropagation();
+            } else {
+              evt.returnValue = false;
+            }
 
             if(!this.isAllowScroll){//是否可以滚动
               return
