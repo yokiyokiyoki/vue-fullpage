@@ -96,14 +96,23 @@ export default {
           this.fullpage.current = index
         },
         mouseWheelHandle (event) {
+			// 添加冒泡阻止
+			let evt = event || window.event;
+			if( evt.stopPropagation ) {
+				evt.stopPropagation();
+			} else {
+				evt.returnValue = false;
+			}
+
             if(!this.isAllowScroll){//是否可以滚动
               return
             }
             if (this.fullpage.isScrolling) {// 加锁部分
                 return false;
             }
+			
             let e = event.originalEvent || event;
-            this.fullpage.deltaY = e.deltaY;
+            this.fullpage.deltaY = e.deltaY|| e.detail; // Firefox使用detail
             if (this.fullpage.deltaY > 0) {
                 this.next();
             } else if (this.fullpage.deltaY < 0) {
