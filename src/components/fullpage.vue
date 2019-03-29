@@ -55,6 +55,9 @@ export default {
             })
             //显示滚动盒子
             this.isShow=true
+
+            //如果index是其他，那么translate需要fix,when resize
+            this.directToMove(this.fullpage.current)
         },
         next() {
             let len = this.$slots.section.length;
