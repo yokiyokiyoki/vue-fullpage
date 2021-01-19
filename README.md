@@ -24,8 +24,12 @@ or
 
 ```html
 <script src="vue.min.js"></script>
+<!-- use vue2 -->
+<!-- <script src="https://cdn.bootcss.com/vue/2.2.1/vue.js"></script> -->
 <!-- must place this line after vue.js -->
 <script src="v-fullpage.umd.min.js"></script>
+<!-- download -->
+<!-- <script src="https://github.com/yokiyokiyoki/vue-fullpage/blob/master/dist/v-fullpage.umd.min.js"></script> -->
 ```
 
 ## Demo

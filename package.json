@@ -22,6 +22,7 @@
     "@vue/cli-service": "^3.0.1",
     "commitizen": "^2.10.1",
     "cz-conventional-changelog": "^2.1.0",
+    "echarts": "^5.0.1",
     "vue-template-compiler": "^2.5.17"
   },
   "eslintConfig": {
