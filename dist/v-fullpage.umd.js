@@ -1697,7 +1697,7 @@ component.options.__file = "fullpage.vue"
 }); // 需要自行处理浏览器引入和模块引入的问题
 
 if (typeof window !== "undefined" && window.Vue) {
-  window.Vue.component("v-fullpage", fullpage);
+  window.fullpage = window.Vue.component("v-fullpage", fullpage);
 }
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
 
