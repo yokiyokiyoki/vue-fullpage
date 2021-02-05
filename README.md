@@ -62,6 +62,7 @@ or
 |       Name        | Description                            |
 | :---------------: | -------------------------------------- |
 | setAllowScrolling | 传入 true/false，禁止滚动/开放滚动事件 |
+|       move        | 传入 index，移动到 index 页面          |
 
 ## License
 

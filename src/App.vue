@@ -1,11 +1,18 @@
 <template>
   <div id="app">
     <fullpage ref='fullpage' >
-      <div slot='section' class="section-one">
+      <div slot='section' class="section">
           <div ref='chart1' class='chart-box'></div>
       </div>
-      <div slot='section' class="section-two" >
+      <div slot='section' class="section" >
          <div ref='chart2' class='chart-box'></div>
+      </div>
+      <div slot='section' class="section" >
+         <div ref='chart3' class='chart-box'></div>
+      </div>
+      <div slot='section' class="section" >
+         <div ref='chart4' class='chart-box'></div>
+         <button @click='handleClick'>back</button>
       </div>
     </fullpage>
   </div>
@@ -20,10 +27,15 @@ export default {
   mounted(){
     this.setChart(this.$refs['chart1'])
     this.setChart(this.$refs['chart2'])
+    this.setChart(this.$refs['chart3'])
+    this.setChart(this.$refs['chart4'])
     /* eslint-disable */
     console.log(this.$refs['fullpage'])
   },
   methods:{
+    handleClick(){
+      this.$refs['fullpage'].move(1)
+    },
     setChart(dom){
       var myChart = echarts.init(dom);
       var option = {
@@ -66,12 +78,10 @@ body {
   text-align: center;
   color: #2c3e50;
 }
-.section-one {
+.section{
   color: white;
 }
-.section-two {
-  color: white;
-}
+
 .chart-box{
   height: 100vh;
   width:100vw;
